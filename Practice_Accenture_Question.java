@@ -75,46 +75,106 @@ public class Practice_Accenture_Question {
 
     // }
 
-    public static int CheckPassword(String s) {
+    // public static int CheckPassword(String s) {
 
-        int num = 0;
-        int upper = 0;
-        // 1st condition
-        if (s.length() < 4)
-            return 0;
-        // 2nd condition
-        if (s.charAt(0) >= '0' && s.charAt(0) <= '9')
-            return 0;
+    // int num = 0;
+    // int upper = 0;
+    // // 1st condition
+    // if (s.length() < 4)
+    // return 0;
+    // // 2nd condition
+    // if (s.charAt(0) >= '0' && s.charAt(0) <= '9')
+    // return 0;
 
-        // 3rd condition and so on conditions are checking inside the for loop
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == ' ' && s.charAt(i) == '/') {
-                return 0;
+    // // 3rd condition and so on conditions are checking inside the for loop
+    // for (int i = 0; i < s.length(); i++) {
+    // if (s.charAt(i) == ' ' && s.charAt(i) == '/') {
+    // return 0;
 
-            }
+    // }
 
-            else if (s.charAt(i) >= 'A' && s.charAt(i) <= 'Z') {
-                upper++;
-            } else if (s.charAt(i) >= '0' && s.charAt(i) <= '9') {
-                num++;
-            }
+    // else if (s.charAt(i) >= 'A' && s.charAt(i) <= 'Z') {
+    // upper++;
+    // } else if (s.charAt(i) >= '0' && s.charAt(i) <= '9') {
+    // num++;
+    // }
+
+    // }
+    // if (upper < 1 || num < 1) {
+    // return 0;
+    // }
+    // return 1;
+
+    // // you are thinking how we put condition of greater than and smaller than on
+    // a
+    // // charecter of alphabet and number , is because all charecter are also a
+    // number
+    // // so when we writr condition on it , it takes its ASCII values and do the
+    // // condition , see chatgpt to better explaination
+    // }
+
+    // public static void main(String[] args) {
+    // Scanner sc = new Scanner(System.in);
+    // String s = sc.next();
+    // System.out.println(CheckPassword(s));
+
+    // }
+
+
+
+    // public static int solve(int arr[],int num,int diff){
+    //     int count=0;
+
+    //     for(int i=0;i<arr.length;i++){
+    //         if(Math.abs(arr[i]-num)<=diff){
+    //             count++;
+    //         }
+    //     }
+
+
+    //     if(count==0)return -1;
+
+    //     return count;
+    // }
+
+    // public static void main(String args[]){
+    //     Scanner sc=new Scanner (System.in);
+    //     int n=sc.nextInt();
+    //     int arr[]=new int [n];
+
+    //     for(int i=0;i<n;i++){
+    //         arr[i]=sc.nextInt();
+
+    //     }
+
+    //     int num=sc.nextInt();
+    //     int diff=sc.nextInt();
+
+    //     System.out.println(solve(arr,num,diff));
+
+    // }
+
+public static int solve(int n,int m){
+    int sumdiv=0;
+    int sumnotdiv=0;
+
+    for(int i=1;i<=m;i++){
+        if(i%n==0){
+           sumdiv+=i;
 
         }
-        if (upper < 1 || num < 1) {
-            return 0;
+        else{
+            sumnotdiv+=i;
         }
-        return 1;
-
-        // you are thinking how we put condition of greater than and smaller than on a
-        // charecter of alphabet and number , is because all charecter are also a number
-        // so when we writr condition on it , it takes its ASCII values and do the
-        // condition , see chatgpt to better explaination
     }
 
+    return Math.abs(sumnotdiv-sumdiv);
+}
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String s = sc.next();
-        System.out.println(CheckPassword(s));
+        Scanner sc=new Scanner (System.in);
+        int n=sc.nextInt();
+        int m=sc.nextInt();
+        System.out.println(solve(n,m));
 
     }
 }
