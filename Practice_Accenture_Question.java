@@ -75,6 +75,7 @@ public class Practice_Accenture_Question {
 
     // }
 
+    // password validation--------------------------------------
     // public static int CheckPassword(String s) {
 
     // int num = 0;
@@ -120,61 +121,194 @@ public class Practice_Accenture_Question {
 
     // }
 
+    // count of numbers in an array which are within the given difference from a
+    // given number--------------------------------------
+    // public static int solve(int arr[], int num, int diff) {
+    // int count = 0;
+
+    // for (int i = 0; i < arr.length; i++) {
+    // if (Math.abs(arr[i] - num) <= diff) {
+    // count++;
+    // }
+    // }
+
+    // if (count == 0)
+    // return -1;
+
+    // return count;
+    // }
+
+    // public static void main(String args[]) {
+    // Scanner sc = new Scanner(System.in);
+    // int n = sc.nextInt();
+    // int arr[] = new int[n];
+
+    // for (int i = 0; i < n; i++) {
+    // arr[i] = sc.nextInt();
+
+    // }
+
+    // int num = sc.nextInt();
+    // int diff = sc.nextInt();
+
+    // System.out.println(solve(arr, num, diff));
+
+    // }
+
+    // sum of numbers from 1 to m which are divisible by n and not divisible by n
+    // and return absolute difference------------------------------
+    // public static int solve(int n, int m) {
+    // int sumdiv = 0;
+    // int sumnotdiv = 0;
+
+    // for (int i = 1; i <= m; i++) {
+    // if (i % n == 0) {
+    // sumdiv += i;
+
+    // } else {
+    // sumnotdiv += i;
+    // }
+    // }
+
+    // return Math.abs(sumnotdiv - sumdiv);
+    // }
+
+    // public static void main(String[] args) {
+    // Scanner sc = new Scanner(System.in);
+    // int n = sc.nextInt();
+    // int m = sc.nextInt();
+    // System.out.println(solve(n, m));
+
+    // }
+
+    // product of two smallest number in an array such that their sum is less than
+    // equal to given sum--------------------------------------
+    // public static int solve(int arr[], int sum) {
+
+    // if (arr.length == 0 || arr.length < 2) {
+    // return -1;
+    // }
+
+    // int small = Integer.MAX_VALUE;
+    // int secondsmall = Integer.MAX_VALUE;
+    // for (int i = 0; i < arr.length; i++) {
+    // if (arr[i] < small) {
+    // secondsmall = small;
+    // small = arr[i];
+    // } else if (arr[i] < secondsmall && arr[i] != small) {
+    // secondsmall = arr[i];
+    // }
+    // }
+
+    // if (small + secondsmall <= sum) {
+    // return small * secondsmall;
+    // }
+    // return 0;
+
+    // }
+
+    // public static void main(String args[]) {
+    // Scanner sc = new Scanner(System.in);
+
+    // int sum = sc.nextInt();
+
+    // int n = sc.nextInt();
+    // int arr[] = new int[n];
+    // for (int i = 0; i < n; i++) {
+    // arr[i] = sc.nextInt();
+
+    // }
+
+    // System.out.println(solve(arr, sum));
+
+    // }
+
+    //// convert a number in base n to decimal number
+    //// system------------------------------------
+    // static char
+    //// arr[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+
+    // public static String solve(int n,int num){
+    // StringBuilder sb=new StringBuilder();
+
+    // while(num>0){
+    // int r=num%n;
+    // sb.append(arr[r]);
+    // num=num/n;
+
+    // }
+
+    // return sb.reverse().toString();
+
+    // }
+    // public static void main(String[] args) {
+    // Scanner sc=new Scanner (System.in);
+    // int n=sc.nextInt();
+    // int num=sc.nextInt(); // asumption is n[1,36} 36 inclusive
+
+    // System.out.println(solve(n,num));
+
+    // }
 
 
-    // public static int solve(int arr[],int num,int diff){
-    //     int count=0;
+    // move all '-' to the begining of the string--------------------------------------
+    // public static String solve(String s, int n) {
+    //     if (n == 0)
+    //         return null;
+    //     StringBuilder sb = new StringBuilder(s);
 
-    //     for(int i=0;i<arr.length;i++){
-    //         if(Math.abs(arr[i]-num)<=diff){
-    //             count++;
+    //     for (int i = 0; i < n; i++) {
+    //         if (sb.charAt(i) == '-') {
+    //             sb.deleteCharAt(i);
+    //              i--;
+    //             sb.insert(0, '-');
+
     //         }
     //     }
 
-
-    //     if(count==0)return -1;
-
-    //     return count;
-    // }
-
-    // public static void main(String args[]){
-    //     Scanner sc=new Scanner (System.in);
-    //     int n=sc.nextInt();
-    //     int arr[]=new int [n];
-
-    //     for(int i=0;i<n;i++){
-    //         arr[i]=sc.nextInt();
-
-    //     }
-
-    //     int num=sc.nextInt();
-    //     int diff=sc.nextInt();
-
-    //     System.out.println(solve(arr,num,diff));
+    //     return sb.toString();
 
     // }
 
-public static int solve(int n,int m){
-    int sumdiv=0;
-    int sumnotdiv=0;
+    // public static void main(String[] args) {
+    //     Scanner sc = new Scanner(System.in);
+    //     String s = sc.next();
+    //     System.out.println(solve(s, s.length()));
 
-    for(int i=1;i<=m;i++){
-        if(i%n==0){
-           sumdiv+=i;
+    // }
 
+    public static int solve(int n1,int n2){
+        if(n1==0 || n2==0){
+            return -1;    
         }
-        else{
-            sumnotdiv+=i;
+        int count=0;
+        int carry=0;
+        
+        while(n1>0 ||n2 >0){
+            int a=n1%10;
+            int b=n2%10;
+            if(carry==1 && a+b+1>9){
+                count++;
+                carry=1;
+            }
+            else if(a+b>9){
+                count++;
+                carry=1;
+            }
+            else if(carry==1 && a+b+1<=9){
+                carry=0;
+            }
+            n1=n1/10;
+            n2=n2/10;
         }
+
+     return count;
+
     }
-
-    return Math.abs(sumnotdiv-sumdiv);
-}
     public static void main(String[] args) {
-        Scanner sc=new Scanner (System.in);
-        int n=sc.nextInt();
-        int m=sc.nextInt();
-        System.out.println(solve(n,m));
-
+    Scanner sc = new Scanner(System.in);
+    int num1=sc.nextInt();
+    int num2=sc.nextInt();
+    System.out.println(solve(num1,num2));
     }
 }
