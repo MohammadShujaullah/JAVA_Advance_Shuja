@@ -250,65 +250,167 @@ public class Practice_Accenture_Question {
 
     // }
 
-
-    // move all '-' to the begining of the string--------------------------------------
+    // move all '-' to the begining of the
+    // string--------------------------------------
     // public static String solve(String s, int n) {
-    //     if (n == 0)
-    //         return null;
-    //     StringBuilder sb = new StringBuilder(s);
+    // if (n == 0)
+    // return null;
+    // StringBuilder sb = new StringBuilder(s);
 
-    //     for (int i = 0; i < n; i++) {
-    //         if (sb.charAt(i) == '-') {
-    //             sb.deleteCharAt(i);
-    //              i--;
-    //             sb.insert(0, '-');
+    // for (int i = 0; i < n; i++) {
+    // if (sb.charAt(i) == '-') {
+    // sb.deleteCharAt(i);
+    // i--;
+    // sb.insert(0, '-');
 
-    //         }
-    //     }
+    // }
+    // }
 
-    //     return sb.toString();
+    // return sb.toString();
 
     // }
 
     // public static void main(String[] args) {
-    //     Scanner sc = new Scanner(System.in);
-    //     String s = sc.next();
-    //     System.out.println(solve(s, s.length()));
+    // Scanner sc = new Scanner(System.in);
+    // String s = sc.next();
+    // System.out.println(solve(s, s.length()));
 
     // }
 
-    public static int solve(int n1,int n2){
-        if(n1==0 || n2==0){
-            return -1;    
-        }
-        int count=0;
-        int carry=0;
-        
-        while(n1>0 ||n2 >0){
-            int a=n1%10;
-            int b=n2%10;
-            if(carry==1 && a+b+1>9){
-                count++;
-                carry=1;
-            }
-            else if(a+b>9){
-                count++;
-                carry=1;
-            }
-            else if(carry==1 && a+b+1<=9){
-                carry=0;
-            }
-            n1=n1/10;
-            n2=n2/10;
-        }
+    // -- count of carry in addition of two
+    // number--------------------------------------
+    // public static int solve(int n1,int n2){
+    // if(n1==0 || n2==0){
+    // return -1;
+    // }
+    // int count=0;
+    // int carry=0;
 
-     return count;
+    // while(n1>0 ||n2 >0){
+    // int a=n1%10;
+    // int b=n2%10;
+    // if(carry==1 && a+b+1>9){
+    // count++;
+    // carry=1;
+    // }
+    // else if(a+b>9){
+    // count++;
+    // carry=1;
+    // }
+    // else if(carry==1 && a+b+1<=9){
+    // carry=0;
+    // }
+    // n1=n1/10;
+    // n2=n2/10;
+    // }
 
-    }
+    // return count;
+
+    // }
+    // public static void main(String[] args) {
+    // Scanner sc = new Scanner(System.in);
+    // int num1=sc.nextInt();
+    // int num2=sc.nextInt();
+    // System.out.println(solve(num1,num2));
+    // }
+
+    // convert the string to either uppercase or lowercase based on the count of
+    // uppercase and lowercase letters in the
+    // string--------------------------------------
+    // public static void main(String[] args) {
+    // Scanner sc=new Scanner(System.in);
+    // String s=sc.next();
+    // int countcap=0;
+    // int countsmall=0;
+
+    // for(int i=0;i<s.length();i++){
+    // if(s.charAt(i)-'A'>=0 && s.charAt(i)-'A'<=25){
+    // countcap++;
+
+    // }
+    // else if(s.charAt(i)-'a'>=0 && s.charAt(i)-'a'<=25){
+    // countsmall++;
+
+    // }
+
+    // }
+
+    // if(countcap>countsmall){
+    // s=s.toUpperCase();
+
+    // }
+    // else if(countsmall>countcap){
+    // s=s.toLowerCase();
+
+    // }
+    // else{
+    // System.out.println(s);;
+    // }
+
+    // System.out.println(s);
+
+    // }
+
+    // In a game of Rock, Paper, Scissors, the following rules are applied:
+    // Rock defeats Scissors
+    // public static void main(String[] args) {
+    // Scanner sc=new Scanner (System.in);
+    // String A=sc.next();
+
+    // if(A=="Rock"){
+    // System.out.println("Paper");
+    // }
+    // else if(A=="Paper"){
+    // System.out.println("Scissor");
+
+    // }
+    // else if(A=="Scissor"){
+    // System.out.println("Rock");
+
+    // }
+    // else{
+    // System.out.println("Invalid Input");
+    // }
+
+    // }
+
+    // count of numbers in an array which are greater than all the elements to
+    // their right side--------------------------------------
+    // public static void main(String[] args) {
+
+    // // No use of Prioroty Queue, just for practicing how to define max PQ .
+    // //PriorityQueue<Integer>pq=new PriorityQueue<>(); // min pq
+    // PriorityQueue<Integer>pq=new PriorityQueue<>(Collections.reverseOrder()); //
+    // max pq
+
+    // int count=0 ;
+    // int arr[]={8,12,1,3,2};
+    // int n=arr.length;
+
+    // int Super=Integer.MIN_VALUE;
+
+    // for(int i=n-1;i>=0;i--){
+    // if(arr[i]>Super){
+    // count++;
+    // Super=arr[i];
+    // }
+
+    // }
+
+    // System.out.println(count);
     public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    int num1=sc.nextInt();
-    int num2=sc.nextInt();
-    System.out.println(solve(num1,num2));
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        while (n % 10 != n) {      // and the simple condition is**( n>=10).
+
+            if (n % 2 == 0) {
+                n = (n - 2) / 2;
+
+            } else {
+                n = n / 2;
+            }
+        }
+        System.out.println(n);
     }
+
 }
