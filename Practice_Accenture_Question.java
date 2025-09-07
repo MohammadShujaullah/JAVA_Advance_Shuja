@@ -398,19 +398,79 @@ public class Practice_Accenture_Question {
     // }
 
     // System.out.println(count);
+    // }
+
+    // You are given a number n. You need to perform the following operations
+    // until n becomes a single-digit number:
+    // public static void main(String[] args) {
+    // Scanner sc = new Scanner(System.in);
+    // int n = sc.nextInt();
+    // while (n % 10 != n) { // and the simple condition is**( n>=10).
+
+    // if (n % 2 == 0) {
+    // n = (n - 2) / 2;
+
+    // } else {
+    // n = n / 2;
+    // }
+    // }
+    // System.out.println(n);
+    // }
+
+    // For each element in the array, find the next greater element to its right.
+    // If there is no greater element to the right, print -1 for that element.
+    // public static void main(String[] args) {
+    // Scanner sc = new Scanner(System.in);
+    // int n = sc.nextInt();
+    // int arr[] = new int[n];
+    // for (int i = 0; i < n; i++) {
+    // arr[i] = sc.nextInt();
+
+    // }
+
+    // PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+    // for (int i = n - 1; i >= 0; i--) {
+    // if (pq.size() == 0) {
+    // System.out.println(-1);
+    // pq.add(arr[i]);
+    // continue;
+    // }
+    // if (arr[i] > pq.peek()) {
+    // while (arr[i] > pq.peek()) {
+    // pq.poll();
+    // }
+
+    // }
+    // System.out.println(pq.peek());
+    // pq.add(arr[i]);
+    // }
+
+    // }
+
+
+    // For each element in the array, find the next greater element to its left.
+    // If there is no greater element to the left, print -1 for that element.
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        while (n % 10 != n) {      // and the simple condition is**( n>=10).
+        int arr[] = new int[n];
+        for (int i = 0; i < n; i++)
+            arr[i] = sc.nextInt();
 
-            if (n % 2 == 0) {
-                n = (n - 2) / 2;
+        Stack<Integer> st = new Stack<>();
+        int ans[] = new int[n];
 
-            } else {
-                n = n / 2;
+        for (int i = 0; i < n; i++) {
+            while (!st.isEmpty() && st.peek() <= arr[i]) {
+                st.pop();
             }
+            ans[i] = st.isEmpty() ? -1 : st.peek();
+            st.push(arr[i]);
         }
-        System.out.println(n);
-    }
 
+        for (int x : ans) {
+            System.out.print(x + " ");
+        }
+    }
 }
