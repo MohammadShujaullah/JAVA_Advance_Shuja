@@ -448,29 +448,55 @@ public class Practice_Accenture_Question {
 
     // }
 
-
     // For each element in the array, find the next greater element to its left.
     // If there is no greater element to the left, print -1 for that element.
+    // public static void main(String[] args) {
+    // Scanner sc = new Scanner(System.in);
+    // int n = sc.nextInt();
+    // int arr[] = new int[n];
+    // for (int i = 0; i < n; i++)
+    // arr[i] = sc.nextInt();
+
+    // Stack<Integer> st = new Stack<>();
+    // int ans[] = new int[n];
+
+    // for (int i = 0; i < n; i++) {
+    // while (!st.isEmpty() && st.peek() <= arr[i]) {
+    // st.pop();
+    // }
+    // ans[i] = st.isEmpty() ? -1 : st.peek();
+    // st.push(arr[i]);
+    // }
+
+    // for (int x : ans) {
+    // System.out.print(x + " ");
+    // }
+    // }
+
+
+
+    
+    // Given an array of integers, find the maximum sum of a subsequence such that
+    // no two elements in the subsequence are adjacent in the original array.
+    public static int solve(int arr[], int idx) {
+        if (idx >= arr.length) {
+            return 0;
+        }
+        int take = arr[idx] + solve(arr, idx + 1);
+        int nottake = solve(arr, idx + 1);
+
+        return Math.max(take, nottake);
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int arr[] = new int[n];
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
 
-        Stack<Integer> st = new Stack<>();
-        int ans[] = new int[n];
-
-        for (int i = 0; i < n; i++) {
-            while (!st.isEmpty() && st.peek() <= arr[i]) {
-                st.pop();
-            }
-            ans[i] = st.isEmpty() ? -1 : st.peek();
-            st.push(arr[i]);
         }
 
-        for (int x : ans) {
-            System.out.print(x + " ");
-        }
+        System.out.println(solve(arr, 0));
     }
 }
