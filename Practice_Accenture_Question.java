@@ -473,30 +473,75 @@ public class Practice_Accenture_Question {
     // }
     // }
 
-
-
-    
     // Given an array of integers, find the maximum sum of a subsequence such that
     // no two elements in the subsequence are adjacent in the original array.
-    public static int solve(int arr[], int idx) {
-        if (idx >= arr.length) {
-            return 0;
-        }
-        int take = arr[idx] + solve(arr, idx + 1);
-        int nottake = solve(arr, idx + 1);
+    // public static int solve(int arr[], int idx) {
+    // if (idx >= arr.length) {
+    // return 0;
+    // }
+    // int take = arr[idx] + solve(arr, idx + 1);
+    // int nottake = solve(arr, idx + 1);
 
-        return Math.max(take, nottake);
-    }
+    // return Math.max(take, nottake);
+    // }
 
+    // public static void main(String[] args) {
+    // Scanner sc = new Scanner(System.in);
+    // int n = sc.nextInt();
+    // int arr[] = new int[n];
+    // for (int i = 0; i < n; i++) {
+    // arr[i] = sc.nextInt();
+
+    // }
+
+    // System.out.println(solve(arr, 0));
+    // }
+
+    // Given a number num and a multiple m, find the nearest multiple of m to num.
+    // If there are two such multiples, return the larger one.
+
+    // public static int solve(int num,int m){
+    // int r=num%m;
+
+    // if(Math.abs(num-(num-r))>Math.abs(num-(num-r+m))){
+    // return num-r+m;
+    // }
+    // else if(Math.abs(num-(num-r))<Math.abs(num-(num-r+m))){
+    // return num-r;
+    // }
+
+    // // else
+    // return (Math.max(num-r+m,num-r));
+
+    // }
+    // public static void main(String[] args) {
+    // Scanner sc=new Scanner (System.in);
+    // int num=sc.nextInt();
+    // int n=sc.nextInt();
+
+    // System.out.println(solve(num,n));
+
+    // }
+
+    // Alice has to climb N stairs to reach top. In each step Alice can climb either
+    // 1 step or M steps, Find the minimum numbers of steps to reach the top.
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int arr[] = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
+        int m = sc.nextInt();
 
+        int count = 0;
+
+        while (n > 0) {
+            n = n - m;
+            count++;
+            if (n >= m) {
+                continue;
+            } else {
+                count += n;
+            }
         }
+        System.out.println(count);
 
-        System.out.println(solve(arr, 0));
     }
 }
