@@ -632,65 +632,106 @@ public class Practice_Accenture_Question {
     // Given a binary array, find the length of the longest contiguous subarray with
     // an equal number of 0s and 1s.
 
-    // Optimal approach O(n) using hashmap
-    public static int solve2(int arr[]) {
-        HashMap<Integer, Integer> mp = new HashMap<>();
-        int sum = 0;
-        int max = 0;
+    // // Optimal approach O(n) using hashmap
+    // public static int solve2(int arr[]) {
+    // HashMap<Integer, Integer> mp = new HashMap<>();
+    // int sum = 0;
+    // int max = 0;
 
-        for (int i = 0; i < arr.length; i++) {
-            sum += (arr[i] == 0) ? -1 : 1;
+    // for (int i = 0; i < arr.length; i++) {
+    // sum += (arr[i] == 0) ? -1 : 1;
 
-            if (sum == 0) {
-                max = i + 1; // return length if sum is 0
-            }
+    // if (sum == 0) {
+    // max = i + 1; // return length if sum is 0
+    // }
 
-            if (mp.containsKey(sum)) {
-                max = Math.max(max, i - mp.get(sum)); // if sum is already present then check the length from previous
-                                                      // index to current index and update max
-            } else {
-                mp.put(sum, i);
-            }
+    // if (mp.containsKey(sum)) {
+    // max = Math.max(max, i - mp.get(sum)); // if sum is already present then check
+    // the length from previous
+    // // index to current index and update max
+    // } else {
+    // mp.put(sum, i);
+    // }
+    // }
+    // }
+
+    // // Brute force approach O(n^2)
+    // public static int solve(int arr[]) {
+
+    // int max = Integer.MIN_VALUE;
+    // for (int i = 0; i < arr.length; i++) {
+    // int count = 0; // reset for each subarray starting at i
+    // for (int j = i; j < arr.length; j++) {
+    // if (arr[j] == 1) {
+    // count++;
+    // } else {
+    // count--;
+    // }
+
+    // if (count == 0) {
+    // max = Math.max(max, j - i + 1);
+
+    // }
+    // }
+    // }
+
+    // return max;
+    // }
+
+    // public static void main(String[] args) {
+    // Scanner sc = new Scanner(System.in);
+    // int n = sc.nextInt();
+
+    // int arr[] = new int[n];
+
+    // for (int i = 0; i < n; i++) {
+    // arr[i] = sc.nextInt();
+
+    // }
+
+    // System.out.println(solve(arr));
+
+    // System.out.println(solve2(arr));
+    // }
+
+
+
+
+//    // Given a 32-bit signed integer, reverse digits of an integer.
+
+    public static int reverse(int num) {
+        String s = String.valueOf(num);
+
+        StringBuilder sb = new StringBuilder(s);
+
+        int i = 0;
+        int j = s.length() - 1;
+
+        while (i <= j) {
+
+            // sb.setCharAt(0, sb.charAt(3)); // sb = "4234"
+            // sb.setCharAt(3, sb.charAt(0)); // sb = "4234" (oops!)
+
+            char temp = sb.charAt(i);
+            sb.setCharAt(i, sb.charAt(j));
+            sb.setCharAt(j, temp);
+
+            i++;
+            j--;
+
         }
-    }
 
-    // Brute force approach O(n^2)
-    public static int solve(int arr[]) {
+        return Integer.parseInt(sb.toString());
 
-        int max = Integer.MIN_VALUE;
-        for (int i = 0; i < arr.length; i++) {
-            int count = 0; // reset for each subarray starting at i
-            for (int j = i; j < arr.length; j++) {
-                if (arr[j] == 1) {
-                    count++;
-                } else {
-                    count--;
-                }
-
-                if (count == 0) {
-                    max = Math.max(max, j - i + 1);
-
-                }
-            }
-        }
-
-        return max;
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
         int n = sc.nextInt();
 
-        int arr[] = new int[n];
+        System.out.println(reverse(n));
 
-        for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
-
-        }
-
-        System.out.println(solve(arr));
-
-        System.out.println(solve2(arr));
     }
 
 }
