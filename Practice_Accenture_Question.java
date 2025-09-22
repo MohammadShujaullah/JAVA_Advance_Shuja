@@ -525,23 +525,62 @@ public class Practice_Accenture_Question {
 
     // Alice has to climb N stairs to reach top. In each step Alice can climb either
     // 1 step or M steps, Find the minimum numbers of steps to reach the top.
+    // public static void main(String[] args) {
+    //     Scanner sc = new Scanner(System.in);
+    //     int n = sc.nextInt();
+    //     int m = sc.nextInt();
+
+    //     int count = 0;
+
+    //     while (n > 0) {
+    //         n = n - m;
+    //         count++;
+    //         if (n >= m) {
+    //             continue;
+    //         } else {
+    //             count += n;
+    //         }
+    //     }
+    //     System.out.println(count);
+
+    // }
+
+     
+
+
+    // Move all zeros in the array to the end while maintaining the relative order of
+    // the non-zero elements.
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int m = sc.nextInt();
+        Scanner sc=new Scanner (System.in);
+        int n=sc.nextInt();
 
-        int count = 0;
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
 
-        while (n > 0) {
-            n = n - m;
-            count++;
-            if (n >= m) {
-                continue;
-            } else {
-                count += n;
+        }
+
+          int j=0;
+        for(int i=0;i<n;i++){
+            if(arr[i]!=0){
+                arr[j]=arr[i];
+                j++;
+
+
             }
         }
-        System.out.println(count);
+          // Step 2: Fill remaining positions with zeros
+          while(j<n){
+            arr[j]=0;
+            j++;
+          }
+
+        for(int i=0;i<n;i++){
+            System.out.print(arr[i]+" ");
+
+        }
 
     }
 }
+
+
