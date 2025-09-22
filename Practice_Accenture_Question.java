@@ -584,49 +584,113 @@ public class Practice_Accenture_Question {
     // to bottom right which minimizes the sum of all numbers along its path.
     // (recursive approch)
 
-    static int DP[][];
+    // static int DP[][];
 
-    public static int DFS(int arr[][], int i, int j, int m, int n) {
-        // Reached destination
-        if (i == m - 1 && j == n - 1) {
-            return 1;
+    // public static int DFS(int arr[][], int i, int j, int m, int n) {
+    // // Reached destination
+    // if (i == m - 1 && j == n - 1) {
+    // return 1;
 
+    // }
+    // if (DP[i][j] != -1) {
+    // return DP[i][j];
+    // }
+
+    // // Out of bounds or obstacle
+    // if (i >= m || j >= n || arr[i][j] == 1) {
+    // return 0;
+    // }
+
+    // return DP[i][j] = DFS(arr, i + 1, j, m, n) + DFS(arr, i, j + 1, m, n);
+
+    // }
+
+    // public static void main(String[] args) {
+
+    // Scanner sc = new Scanner(System.in);
+    // int m = sc.nextInt();
+    // int n = sc.nextInt();
+    // int arr[][] = new int[m][n];
+
+    // DP = new int[m + 1][n + 1];
+    // for (int x[] : DP) {
+    // Arrays.fill(x, -1);
+
+    // }
+
+    // for (int i = 0; i < m; i++) {
+    // for (int j = 0; j < n; j++) {
+    // arr[i][j] = sc.nextInt();
+
+    // }
+    // }
+
+    // System.out.println(DFS(arr, 0, 0, m, n));
+
+    // }
+
+    // Given a binary array, find the length of the longest contiguous subarray with
+    // an equal number of 0s and 1s.
+
+    // Optimal approach O(n) using hashmap
+    public static int solve2(int arr[]) {
+        HashMap<Integer, Integer> mp = new HashMap<>();
+        int sum = 0;
+        int max = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            sum += (arr[i] == 0) ? -1 : 1;
+
+            if (sum == 0) {
+                max = i + 1; // return length if sum is 0
+            }
+
+            if (mp.containsKey(sum)) {
+                max = Math.max(max, i - mp.get(sum)); // if sum is already present then check the length from previous
+                                                      // index to current index and update max
+            } else {
+                mp.put(sum, i);
+            }
         }
-        if (DP[i][j] != -1) {
-            return DP[i][j];
-        }
-
-        // Out of bounds or obstacle
-        if (i >= m || j >= n || arr[i][j] == 1) {
-            return 0;
-        }
-
-        return DP[i][j] = DFS(arr, i + 1, j, m, n) + DFS(arr, i, j + 1, m, n);
-
     }
 
-    public static void main(String[] args) {
+    // Brute force approach O(n^2)
+    public static int solve(int arr[]) {
 
-        Scanner sc = new Scanner(System.in);
-        int m = sc.nextInt();
-        int n = sc.nextInt();
-        int arr[][] = new int[m][n];
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < arr.length; i++) {
+            int count = 0; // reset for each subarray starting at i
+            for (int j = i; j < arr.length; j++) {
+                if (arr[j] == 1) {
+                    count++;
+                } else {
+                    count--;
+                }
 
-        DP = new int[m + 1][n + 1];
-        for (int x[] : DP) {
-            Arrays.fill(x, -1);
+                if (count == 0) {
+                    max = Math.max(max, j - i + 1);
 
-        }
-
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                arr[i][j] = sc.nextInt();
-
+                }
             }
         }
 
-        System.out.println(DFS(arr, 0, 0, m, n));
+        return max;
+    }
 
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        int arr[] = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+
+        }
+
+        System.out.println(solve(arr));
+
+        System.out.println(solve2(arr));
     }
 
 }
