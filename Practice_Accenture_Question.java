@@ -526,61 +526,103 @@ public class Practice_Accenture_Question {
     // Alice has to climb N stairs to reach top. In each step Alice can climb either
     // 1 step or M steps, Find the minimum numbers of steps to reach the top.
     // public static void main(String[] args) {
-    //     Scanner sc = new Scanner(System.in);
-    //     int n = sc.nextInt();
-    //     int m = sc.nextInt();
+    // Scanner sc = new Scanner(System.in);
+    // int n = sc.nextInt();
+    // int m = sc.nextInt();
 
-    //     int count = 0;
+    // int count = 0;
 
-    //     while (n > 0) {
-    //         n = n - m;
-    //         count++;
-    //         if (n >= m) {
-    //             continue;
-    //         } else {
-    //             count += n;
-    //         }
-    //     }
-    //     System.out.println(count);
+    // while (n > 0) {
+    // n = n - m;
+    // count++;
+    // if (n >= m) {
+    // continue;
+    // } else {
+    // count += n;
+    // }
+    // }
+    // System.out.println(count);
 
     // }
 
-     
-
-
-    // Move all zeros in the array to the end while maintaining the relative order of
+    // Move all zeros in the array to the end while maintaining the relative order
+    // of
     // the non-zero elements.
-    public static void main(String[] args) {
-        Scanner sc=new Scanner (System.in);
-        int n=sc.nextInt();
+    // public static void main(String[] args) {
+    // Scanner sc=new Scanner (System.in);
+    // int n=sc.nextInt();
 
-        int arr[]=new int[n];
-        for(int i=0;i<n;i++){
-            arr[i]=sc.nextInt();
+    // int arr[]=new int[n];
+    // for(int i=0;i<n;i++){
+    // arr[i]=sc.nextInt();
+
+    // }
+
+    // int j=0;
+    // for(int i=0;i<n;i++){
+    // if(arr[i]!=0){
+    // arr[j]=arr[i];
+    // j++;
+
+    // }
+    // }
+    // // Step 2: Fill remaining positions with zeros
+    // while(j<n){
+    // arr[j]=0;
+    // j++;
+    // }
+
+    // for(int i=0;i<n;i++){
+    // System.out.print(arr[i]+" ");
+
+    // }
+
+    // }
+
+
+
+
+
+
+
+    // Given a m x n grid filled with non-negative numbers, find a path from top
+    // left
+    // to bottom right which minimizes the sum of all numbers along its path.
+    // (recursive approch)
+    public static int DFS(int arr[][], int i, int j, int m, int n) {
+        // Reached destination
+        if (i == m - 1 && j == n - 1) {
+            return 1;
 
         }
 
-          int j=0;
-        for(int i=0;i<n;i++){
-            if(arr[i]!=0){
-                arr[j]=arr[i];
-                j++;
+        // Out of bounds or obstacle
+        if (i >= m || j >= n || arr[i][j] == 1) {
+            return 0;
+        }
 
+        return DFS(arr, i + 1, j, m, n) + DFS(arr, i, j + 1, m, n);
+
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int m = sc.nextInt();
+        int n = sc.nextInt();
+        int arr[][] = new int[m][n];
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                arr[i][j] = sc.nextInt();
 
             }
         }
-          // Step 2: Fill remaining positions with zeros
-          while(j<n){
-            arr[j]=0;
-            j++;
-          }
 
-        for(int i=0;i<n;i++){
-            System.out.print(arr[i]+" ");
-
-        }
+        System.out.println(DFS(arr, 0, 0, m, n));
 
     }
+
+
+    
 }
-
-
