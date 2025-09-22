@@ -579,21 +579,21 @@ public class Practice_Accenture_Question {
 
     // }
 
-
-
-
-
-
-
     // Given a m x n grid filled with non-negative numbers, find a path from top
     // left
     // to bottom right which minimizes the sum of all numbers along its path.
     // (recursive approch)
+
+    static int DP[][];
+
     public static int DFS(int arr[][], int i, int j, int m, int n) {
         // Reached destination
         if (i == m - 1 && j == n - 1) {
             return 1;
 
+        }
+        if (DP[i][j] != -1) {
+            return DP[i][j];
         }
 
         // Out of bounds or obstacle
@@ -601,7 +601,7 @@ public class Practice_Accenture_Question {
             return 0;
         }
 
-        return DFS(arr, i + 1, j, m, n) + DFS(arr, i, j + 1, m, n);
+        return DP[i][j] = DFS(arr, i + 1, j, m, n) + DFS(arr, i, j + 1, m, n);
 
     }
 
@@ -611,6 +611,12 @@ public class Practice_Accenture_Question {
         int m = sc.nextInt();
         int n = sc.nextInt();
         int arr[][] = new int[m][n];
+
+        DP = new int[m + 1][n + 1];
+        for (int x[] : DP) {
+            Arrays.fill(x, -1);
+
+        }
 
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
@@ -623,6 +629,4 @@ public class Practice_Accenture_Question {
 
     }
 
-
-    
 }
