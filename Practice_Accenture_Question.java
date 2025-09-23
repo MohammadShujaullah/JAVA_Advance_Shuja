@@ -743,34 +743,51 @@ public class Practice_Accenture_Question {
         for (int i = 1; i <= arr.length; i++) {
             String s = Integer.toBinaryString(i);
 
-            StringBuilder sb = new StringBuilder(s);
-            int x = 0;
-
-            while (x < sb.length()) {
-                if (sb.charAt(x) == '0') {
-                    sb.setCharAt(x, '1');
-                } else if (sb.charAt(x) == '1') {
-                    sb.setCharAt(x, '2');
-
+            int zero=0;
+            for(char c:s.toCharArray()){
+                if(c=='0'){
+                    zero++;
                 }
-                x++;
-
             }
 
-            int n = Integer.parseInt(sb.toString());
-            int sum = 0;
-            while (n > 0) {
-                int r = n % 10;
-
-                sum += r;
-
-                n = n / 10;
-
-            }
-
-            if (sum % 2 == 1) {
+            if(zero%2==1){
                 count++;
             }
+
+
+             
+            /*  we can avoid the  using stringBuilder and replacing 1->2 and 0->1
+            using this techniques*/  
+
+             
+            // StringBuilder sb = new StringBuilder(s);
+            // int x = 0;
+
+            // while (x < sb.length()) {
+            //     if (sb.charAt(x) == '0') {
+            //         sb.setCharAt(x, '1');
+            //     } else if (sb.charAt(x) == '1') {
+            //         sb.setCharAt(x, '2');
+
+            //     }
+            //     x++;
+
+            // }
+
+            // int n = Integer.parseInt(sb.toString());
+            // int sum = 0;
+            // while (n > 0) {
+            //     int r = n % 10;
+
+            //     sum += r;
+
+            //     n = n / 10;
+
+            // }
+
+            // if (sum % 2 == 1) {
+            //     count++;
+            // }
         }
 
         return count;
