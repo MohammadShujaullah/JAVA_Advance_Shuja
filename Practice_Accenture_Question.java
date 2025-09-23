@@ -694,35 +694,86 @@ public class Practice_Accenture_Question {
     // System.out.println(solve2(arr));
     // }
 
+    // // // Given a 32-bit signed integer, reverse digits of an integer.
+
+    // public static int reverse(int num) {
+    // String s = String.valueOf(num);
+
+    // StringBuilder sb = new StringBuilder(s);
+
+    // int i = 0;
+    // int j = s.length() - 1;
+
+    // while (i <= j) {
+
+    // // sb.setCharAt(0, sb.charAt(3)); // sb = "4234"
+    // // sb.setCharAt(3, sb.charAt(0)); // sb = "4234" (oops!)
+
+    // char temp = sb.charAt(i);
+    // sb.setCharAt(i, sb.charAt(j));
+    // sb.setCharAt(j, temp);
+
+    // i++;
+    // j--;
+
+    // }
+
+    // return Integer.parseInt(sb.toString());
+
+    // }
+
+    // public static void main(String[] args) {
+    // Scanner sc = new Scanner(System.in);
+
+    // int n = sc.nextInt();
+
+    // System.out.println(reverse(n));
+
+    // }
 
 
 
-//    // Given a 32-bit signed integer, reverse digits of an integer.
 
-    public static int reverse(int num) {
-        String s = String.valueOf(num);
+    // You are given an array of integers. For each index i (1-based), you need to
+    // perform the following operations:
+    public static int solve(int arr[]) {
 
-        StringBuilder sb = new StringBuilder(s);
+        int count = 0;
 
-        int i = 0;
-        int j = s.length() - 1;
+        for (int i = 1; i <= arr.length; i++) {
+            String s = Integer.toBinaryString(i);
 
-        while (i <= j) {
+            StringBuilder sb = new StringBuilder(s);
+            int x = 0;
 
-            // sb.setCharAt(0, sb.charAt(3)); // sb = "4234"
-            // sb.setCharAt(3, sb.charAt(0)); // sb = "4234" (oops!)
+            while (x < sb.length()) {
+                if (sb.charAt(x) == '0') {
+                    sb.setCharAt(x, '1');
+                } else if (sb.charAt(x) == '1') {
+                    sb.setCharAt(x, '2');
 
-            char temp = sb.charAt(i);
-            sb.setCharAt(i, sb.charAt(j));
-            sb.setCharAt(j, temp);
+                }
+                x++;
 
-            i++;
-            j--;
+            }
 
+            int n = Integer.parseInt(sb.toString());
+            int sum = 0;
+            while (n > 0) {
+                int r = n % 10;
+
+                sum += r;
+
+                n = n / 10;
+
+            }
+
+            if (sum % 2 == 1) {
+                count++;
+            }
         }
 
-        return Integer.parseInt(sb.toString());
-
+        return count;
     }
 
     public static void main(String[] args) {
@@ -730,8 +781,14 @@ public class Practice_Accenture_Question {
 
         int n = sc.nextInt();
 
-        System.out.println(reverse(n));
+        int arr[] = new int[n];
 
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = sc.nextInt();
+
+        }
+
+        System.out.println(solve(arr));
     }
 
 }
