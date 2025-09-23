@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.LinkedList;
 
 public class Practice_Accenture_Question {
     // public static int solve(int r, int unit, int arr[]) {
@@ -731,81 +732,110 @@ public class Practice_Accenture_Question {
 
     // }
 
-
-
-
     // You are given an array of integers. For each index i (1-based), you need to
     // perform the following operations:
-    public static int solve(int arr[]) {
+    // public static int solve(int arr[]) {
 
-        int count = 0;
+    // int count = 0;
 
-        for (int i = 1; i <= arr.length; i++) {
-            String s = Integer.toBinaryString(i);
+    // for (int i = 1; i <= arr.length; i++) {
+    // String s = Integer.toBinaryString(i);
 
-            int zero=0;
-            for(char c:s.toCharArray()){
-                if(c=='0'){
-                    zero++;
-                }
-            }
+    // int zero=0;
+    // for(char c:s.toCharArray()){
+    // if(c=='0'){
+    // zero++;
+    // }
+    // }
 
-            if(zero%2==1){
-                count++;
-            }
+    // if(zero%2==1){
+    // count++;
+    // }
+
+    // /* we can avoid the using stringBuilder and replacing 1->2 and 0->1
+    // using this techniques*/
+
+    // // StringBuilder sb = new StringBuilder(s);
+    // // int x = 0;
+
+    // // while (x < sb.length()) {
+    // // if (sb.charAt(x) == '0') {
+    // // sb.setCharAt(x, '1');
+    // // } else if (sb.charAt(x) == '1') {
+    // // sb.setCharAt(x, '2');
+
+    // // }
+    // // x++;
+
+    // // }
+
+    // // int n = Integer.parseInt(sb.toString());
+    // // int sum = 0;
+    // // while (n > 0) {
+    // // int r = n % 10;
+
+    // // sum += r;
+
+    // // n = n / 10;
+
+    // // }
+
+    // // if (sum % 2 == 1) {
+    // // count++;
+    // // }
+    // }
+
+    // return count;
+    // }
+
+    // public static void main(String[] args) {
+    // Scanner sc = new Scanner(System.in);
+
+    // int n = sc.nextInt();
+
+    // int arr[] = new int[n];
+
+    // for (int i = 0; i < arr.length; i++) {
+    // arr[i] = sc.nextInt();
+
+    // }
+
+    // System.out.println(solve(arr));
+    // }
 
 
-             
-            /*  we can avoid the  using stringBuilder and replacing 1->2 and 0->1
-            using this techniques*/  
 
-             
-            // StringBuilder sb = new StringBuilder(s);
-            // int x = 0;
-
-            // while (x < sb.length()) {
-            //     if (sb.charAt(x) == '0') {
-            //         sb.setCharAt(x, '1');
-            //     } else if (sb.charAt(x) == '1') {
-            //         sb.setCharAt(x, '2');
-
-            //     }
-            //     x++;
-
-            // }
-
-            // int n = Integer.parseInt(sb.toString());
-            // int sum = 0;
-            // while (n > 0) {
-            //     int r = n % 10;
-
-            //     sum += r;
-
-            //     n = n / 10;
-
-            // }
-
-            // if (sum % 2 == 1) {
-            //     count++;
-            // }
-        }
-
-        return count;
-    }
-
+    // Find the middle element of a linked list
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        LinkedList<Integer> list = new LinkedList<>();
 
+        Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
-        int arr[] = new int[n];
+        // we have to use slow and fast `pointer approach to find middle element of
+        // linked list
+        for (int i = 0; i < n; i++) {
+            list.add(sc.nextInt());
+        }
 
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = sc.nextInt();
+        int slow = 0;
+        int fast = 0;
+        while (fast < n - 1 && fast + 1 < n - 1) {
+            slow++;
+            fast += 2;
 
         }
 
-        System.out.println(solve(arr));
+        /*
+         * Node slow = head, fast = head;
+         * while (fast != null && fast.next != null) {
+         * slow = slow.next;
+         * fast = fast.next.next;
+         * }
+         */
+
+        System.out.println(list.get(slow));
+
     }
 
 }
