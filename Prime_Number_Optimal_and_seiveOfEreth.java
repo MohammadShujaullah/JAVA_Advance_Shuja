@@ -115,67 +115,110 @@ public class Prime_Number_Optimal_and_seiveOfEreth {
     // System.out.println(reverse(str));
     // }
 
-    // now we have to find the XOR of all subarrays//Brute force(My approach)
-    public static int solve(int arr[]) {
-        int result = 0;
-        for (int i = 0; i < arr.length; i++) {
-            int XOR = 0;
-            int j = i;
-            while (j < arr.length) {
-                XOR ^= arr[j];
-                result = result ^ XOR;
-                j++;
-            }
+    // // now we have to find the XOR of all subarrays//Brute force(My approach)
+    // public static int solve(int arr[]) {
+    // int result = 0;
+    // for (int i = 0; i < arr.length; i++) {
+    // int XOR = 0;
+    // int j = i;
+    // while (j < arr.length) {
+    // XOR ^= arr[j];
+    // result = result ^ XOR;
+    // j++;
+    // }
+
+    // }
+
+    // return result;
+    // }
+
+    // // optimal approach
+    // // there is a trick ,
+    // // if frequency of element in the array is even , then its its contribution
+    // to
+    // // the final XOR is 0,(x ^ x = 0)
+    // // if frequency of element in the array is odd , then its its contribution to
+    // // the final XOR is the element itself
+
+    // //( and how frequency is determined--> (i+1) * (n-i) subarrays)
+
+    // public static int solve2(int arr[]) {
+
+    // int n=arr.length;
+    // int result=0;
+    // for(int i=0;i<n;i++){
+
+    // int freq=(i+1)*(n-i);
+    // if(freq%2!=0){
+    // result=result^arr[i];
+
+    // }
+
+    // }
+
+    // return result;
+
+    // }
+
+    // public static void main(String[] args) {
+    // Scanner sc = new Scanner(System.in);
+    // int n = sc.nextInt();
+
+    // int arr[] = new int[n];
+
+    // for (int i = 0; i < n; i++) {
+    // arr[i] = sc.nextInt();
+
+    // }
+
+    // //System.out.println(solve(arr));
+
+    // System.out.println(solve2(arr));
+    // }
+
+    // now we have to check if two array of strings are equivalent or not
+    public static boolean solve(String w1[], String w2[]) {
+        if (w1.length != w2.length) {
+            return false;
 
         }
 
-        return result;
-    }
-
-    
-
-    // optimal approach
-    // there is a trick ,
-    // if frequency of element in the array is even , then its its contribution to
-    // the final XOR is 0,(x ^ x = 0)
-    // if frequency of element in the array is odd , then its its contribution to
-    // the final XOR is the element itself
-
-    //( and how frequency is determined--> (i+1) * (n-i)  subarrays)
-
-    public static int solve2(int arr[]) {
-
-        int n=arr.length;
-        int result=0;
-        for(int i=0;i<n;i++){
-
-            int freq=(i+1)*(n-i);
-            if(freq%2!=0){
-                result=result^arr[i];
+        int i = 0;
+        int j = 0;
+        int p1 = 0;
+        int p2 = 0;
+        while (i < w1.length && j < w2.length) {
+            while (w1[i].charAt(p1) == w2[j].charAt(p2)) {
 
             }
-
         }
 
-        return result;
-
-
+        return true;
 
     }
 
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
+        String word1[] = { "ab", "c" };
+        String word2[] = { "a", "bc" };
+        StringBuilder sb1 = new StringBuilder();
+        StringBuilder sb2 = new StringBuilder();
 
-        int arr[] = new int[n];
+        for (String s : word1) {
+            sb1.append(s);
 
-        for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
+        }
+        for (String s : word2) {
+            sb2.append(s);
 
         }
 
-        //System.out.println(solve(arr));
+        if (sb1.toString().equals(sb2.toString())) {
+            System.out.println(true);
+        } else {
+            System.out.println(false);
+        }
 
-        System.out.println(solve2(arr));
     }
 }
