@@ -805,37 +805,73 @@ public class Practice_Accenture_Question {
 
 
 
-    // Find the middle element of a linked list
-    public static void main(String[] args) {
-        LinkedList<Integer> list = new LinkedList<>();
+    
 
+    // Find the middle element of a linked list
+    // public static void main(String[] args) {
+    //     LinkedList<Integer> list = new LinkedList<>();
+
+    //     Scanner sc = new Scanner(System.in);
+    //     int n = sc.nextInt();
+
+    //     // we have to use slow and fast `pointer approach to find middle element of
+    //     // linked list
+    //     for (int i = 0; i < n; i++) {
+    //         list.add(sc.nextInt());
+    //     }
+
+    //     int slow = 0;
+    //     int fast = 0;
+    //     while (fast < n - 1 && fast + 1 < n - 1) {
+    //         slow++;
+    //         fast += 2;
+
+    //     }
+
+    //     /*
+    //      * Node slow = head, fast = head;
+    //      * while (fast != null && fast.next != null) {
+    //      * slow = slow.next;
+    //      * fast = fast.next.next;
+    //      * }
+    //      */
+
+    //     System.out.println(list.get(slow));
+
+    // }
+
+
+
+    // count of numbers in an array which are greater than all the elements to
+    // their right side--------------------------------------
+
+    public static int solve(int arr[]){
+
+        int max=arr[arr.length-1];
+
+        int count=1;
+
+
+        for(int i=arr.length-2;i>=0;i--){
+            if(arr[i]>max){
+                count++;
+                max=arr[i];
+
+            }
+        }
+
+
+        return count;
+    }
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-
-        // we have to use slow and fast `pointer approach to find middle element of
-        // linked list
+        int arr[] = new int[n];
         for (int i = 0; i < n; i++) {
-            list.add(sc.nextInt());
-        }
-
-        int slow = 0;
-        int fast = 0;
-        while (fast < n - 1 && fast + 1 < n - 1) {
-            slow++;
-            fast += 2;
+            arr[i] = sc.nextInt();
 
         }
-
-        /*
-         * Node slow = head, fast = head;
-         * while (fast != null && fast.next != null) {
-         * slow = slow.next;
-         * fast = fast.next.next;
-         * }
-         */
-
-        System.out.println(list.get(slow));
-
+        System.out.println(solve(arr));
     }
 
 }
