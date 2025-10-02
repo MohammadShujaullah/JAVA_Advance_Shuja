@@ -845,33 +845,79 @@ public class Practice_Accenture_Question {
     // count of numbers in an array which are greater than all the elements to
     // their right side--------------------------------------
 
-    public static int solve(int arr[]){
+    // public static int solve(int arr[]){
 
-        int max=arr[arr.length-1];
+    //     int max=arr[arr.length-1];
 
-        int count=1;
+    //     int count=1;
 
 
-        for(int i=arr.length-2;i>=0;i--){
-            if(arr[i]>max){
-                count++;
-                max=arr[i];
+    //     for(int i=arr.length-2;i>=0;i--){
+    //         if(arr[i]>max){
+    //             count++;
+    //             max=arr[i];
 
+    //         }
+    //     }
+
+
+    //     return count;
+    // }
+    // public static void main(String[] args) {
+    //     Scanner sc = new Scanner(System.in);
+    //     int n = sc.nextInt();
+    //     int arr[] = new int[n];
+    //     for (int i = 0; i < n; i++) {
+    //         arr[i] = sc.nextInt();
+
+    //     }
+    //     System.out.println(solve(arr));
+    // }
+
+
+
+
+
+    // Rearrange the array in alternating positive and negative items with O(1)
+    // extra space
+    public static void solve(int nums[],int result[]){
+        if(nums.length==0){
+            return;
+        }
+
+        int n=nums.length;
+
+        int posidx=0;
+        int negidx=1;
+
+        for(int i=0;i<n;i++){
+            if(nums[i]>0){
+                result[posidx]=nums[i];
+                posidx+=2;
+            }
+            else{
+                result[negidx]=nums[i];
+                negidx+=2;
             }
         }
 
-
-        return count;
+        for(int x:result){
+            System.out.print(x+" ");
+        }
     }
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int arr[] = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int nums[]=new int[n];
+        for(int i=0;i<n;i++){
+            nums[i]=sc.nextInt();
 
-        }
-        System.out.println(solve(arr));
+        }   
+
+
+        int result[]=new int[n];
+
+         solve(nums,result);
     }
 
 }
