@@ -176,86 +176,103 @@ public class Prime_Number_Optimal_and_seiveOfEreth {
     // System.out.println(solve2(arr));
     // }
 
-
-
-   
-    
-
     // now we have to check if two array of strings are equivalent or not
     // public static boolean solve(String w1[], String w2[]) {
-    //     if (w1.length != w2.length) {
-    //         return false;
+    // if (w1.length != w2.length) {
+    // return false;
 
-    //     }
+    // }
 
-    //     int i = 0;
-    //     int j = 0;
-    //     int p1 = 0;
-    //     int p2 = 0;
-    //     while (i < w1.length && j < w2.length) {
-    //         while (w1[i].charAt(p1) == w2[j].charAt(p2)) {
+    // int i = 0;
+    // int j = 0;
+    // int p1 = 0;
+    // int p2 = 0;
+    // while (i < w1.length && j < w2.length) {
+    // while (w1[i].charAt(p1) == w2[j].charAt(p2)) {
 
-    //         }
-    //     }
+    // }
+    // }
 
-    //     return true;
+    // return true;
 
     // }
 
     // public static void main(String[] args) {
 
-    //     Scanner sc = new Scanner(System.in);
-    //     String word1[] = { "ab", "c" };
-    //     String word2[] = { "a", "bc" };
-    //     StringBuilder sb1 = new StringBuilder();
-    //     StringBuilder sb2 = new StringBuilder();
+    // Scanner sc = new Scanner(System.in);
+    // String word1[] = { "ab", "c" };
+    // String word2[] = { "a", "bc" };
+    // StringBuilder sb1 = new StringBuilder();
+    // StringBuilder sb2 = new StringBuilder();
 
-    //     for (String s : word1) {
-    //         sb1.append(s);
+    // for (String s : word1) {
+    // sb1.append(s);
 
-    //     }
-    //     for (String s : word2) {
-    //         sb2.append(s);
-
-    //     }
-
-    //     if (sb1.toString().equals(sb2.toString())) {
-    //         System.out.println(true);
-    //     } else {
-    //         System.out.println(false);
-    //     }
+    // }
+    // for (String s : word2) {
+    // sb2.append(s);
 
     // }
 
+    // if (sb1.toString().equals(sb2.toString())) {
+    // System.out.println(true);
+    // } else {
+    // System.out.println(false);
+    // }
+
+    // }
+
+    // now we have to find the sum of odd part of all number from 1 to n
+    // public static int sumoddpart(int n){
+    // int sum=0;
+    // for(int i=1;i<=n;i++){
+
+    // int n=i; // if i is odd means , its odd part is itself
+
+    // while(num%2==0){ // if even means we have to divide it by 2, till its odd
+    // part remains
+    // num/=2;
+
+    // }
+
+    // sum=(sum+num)%10007;
+
+    // }
+    // }
+    // public static void main(String[] args) {
+    // Scanner sc=new Scanner(System.in);
+
+    // int n=sc.nextInt();
+
+    // System.out.println("output of all odd part ",sumoddpart(n));
+    // }
+
+public static int function(int n){
+
+    if(n==0){return -1;}
+     if(n==1){return 0;}
+    if(n==2 || n==3 ){return 1;}
 
 
+     int a=0;
+     int b=1;
+        int c=0;
+     for(int i=2;i<n;i++){
+         c=a+b;
+        a=b;
+        b=c;
 
-// now we have to find the sum of odd part of all number from 1 to n
-   public static int sumoddpart(int n){
-    int sum=0;
-    for(int i=1;i<=n;i++){
+     }
 
-        int n=i;       // if i is odd means , its odd part is itself
+     return c;
+}
 
-        while(num%2==0){              // if even means we have to divide it by 2, till its odd part remains
-            num/=2;       
-           
-
-        }
-
-        sum=(sum+num)%10007;
-
-    }
-   }
     public static void main(String[] args) {
-        Scanner sc=new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
-        int n=sc.nextInt();
+        int n = sc.nextInt();
 
-        System.out.println("output of all odd part ",sumoddpart(n));
+        System.out.println(function(n));
     }
 
-
-
-    
 }
