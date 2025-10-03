@@ -1,2 +1,2 @@
-      // sb.setCharAt(i, sb.charAt(j));
-            // sb.setCharAt(j, sb.charAt(i));
+s1.name="aman";
+    // s1.age=24;
